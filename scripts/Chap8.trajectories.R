@@ -33,7 +33,7 @@ get.stats <- function(player.id){
   d$Age <- d$yearID - byear
   d$SLG <- with(d, (H - X2B - X3B - HR +
                     2 * X2B + 3 * X3B + 4 * HR) / AB)
-  d$OBP <- with(d, (H + BB) / (H + AB + BB + SF))
+  d$OBP <- with(d, (H + BB + HBP) / (AB + BB + SF + HBP)) # HBP are part of OBP formula, H should not be in denominator.
   d$OPS <- with(d, SLG + OBP)
   d
 }
