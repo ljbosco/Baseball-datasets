@@ -16,7 +16,7 @@ hof$MidCareer <- with(hof, (From + To) / 2)
 
 hof$Era <- cut(hof$MidCareer,
         breaks = c(1800, 1900, 1919, 1941, 1960, 1976, 1993, 2050),
-        labels = c("19th Century", "Lively Ball", "Dead Ball",
+        labels = c("19th Century", "Dead Ball", "Lively Ball",
                     "Integration", "Expansion", "Free Agency", 
                     "Long Ball"))
 
@@ -42,7 +42,7 @@ barplot(table(hof$Era))
 plot(table(hof$Era))
 dev.off()
 
-# Section 2.4 Dot plots
+# Section 3.4 Dot plots
 
 T.Era <- table(hof$Era)
 dotchart(as.numeric(T.Era), labels=names(T.Era), xlab="Frequency")
@@ -51,7 +51,7 @@ hof.500 <- subset(hof, HR >= 500)
 hof.500 <- hof.500[order(hof.500$OPS), ]
 dotchart(hof.500$OPS, labels=hof.500$X, xlab="OPS")
 
-# Section 2.5 Numeric Variable: Stripchart and Histogram
+# Section 3.5 Numeric Variable: Stripchart and Histogram
 
 windows(width=7, height=3.5)
 stripchart(hof$MidCareer, method="jitter", pch=1, 
@@ -63,7 +63,7 @@ hist(hof$MidCareer, xlab="Mid Career", main="")
 hist(hof$MidCareer, xlab="Mid Career", main="",
      breaks=seq(1880, 2000, by=20))
 
-# Section 2.6 Two Numeric Variables
+# Section 3.6 Two Numeric Variables
 
 with(hof, plot(MidCareer, OPS))
 with(hof, lines(lowess(MidCareer, OPS, f=0.3)))
@@ -127,7 +127,7 @@ bonds.info <- getinfo("Barry", "Bonds")
 arod.info <- getinfo("Alex", "Rodriguez")
 ruth.info
 
-batting <- read.csv("lahman/Batting.csv")
+batting <- read.csv("Batting.csv")
 
 ruth.data <- subset(batting, playerID == ruth.info$name.code)
 ruth.data$Age <- ruth.data$yearID - ruth.info$byear
